@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Analysis - MedAI</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .upload-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            border: 2px dashed #ccc;
+            text-align: center;
+            border-radius: 10px;
+            background: #f9f9f9;
+        }
+        .upload-area {
+            cursor: pointer;
+            padding: 20px;
+        }
+        .upload-area input {
+            display: none;
+        }
+        .preview-container {
+            margin-top: 15px;
+        }
+        .preview-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="upload-container">
+            <h2 class="text-2xl font-bold text-center mb-4" id="selected-body-part"></h2>
+            <p class="text-center text-gray-700" id="selected-age"></p>
+            <p class="text-center text-gray-700" id="selected-gender"></p>
+            <div class="upload-area" onclick="document.getElementById('file-upload').click()">
+                <i data-lucide="upload" class="mx-auto h-12 w-12 text-gray-400"></i>
+                <p>Drag and drop an image, or click to upload</p>
+                <input id="file-upload" type="file" accept="image/*">
+            </div>
+            <p class="mt-1 text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+            <div id="preview-container" class="preview-container hidden">
+                <img id="preview-image" alt="Preview">
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Function to get URL parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Display selected values on the page
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("selected-body-part").innerText = "Upload an image for: " + getQueryParam("area");
+            document.getElementById("selected-age").innerText = "Age Group: " + getQueryParam("age");
+            document.getElementById("selected-gender").innerText = "Gender: " + getQueryParam("gender");
+        });
+
+        // Handle file upload preview
+        document.getElementById("file-upload").addEventListener("change", function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    document.getElementById("preview-image").src = e.target.result;
+                    document.getElementById("preview-container").classList.remove("hidden");
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

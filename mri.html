@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRI Analysis - MedAI</title>
+    <link href="/css/style.css" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="bg-white">
+ 
+    <!-- Fixed Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-md z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <i data-lucide="stethoscope" class="h-8 w-8 text-blue-600"></i>
+                        <span class="ml-2 text-xl font-bold text-gray-900">MedAI</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex md:items-center md:space-x-4">
+                    <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Home</a>
+                    <a href="/skin.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">Skin Analysis</a>
+                    <a href="/mri.html" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">MRI Analysis</a>
+                    <!-- <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100">About</a>  -->
+                    <div class="flex space-x-4">
+                        <a href="https://doctor-portal-6jq3.onrender.com/login.html" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">Doctor Portal</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="text-center mb-12">
+                <h1 class="text-3xl font-bold text-gray-900">MRI Scan Analysis</h1>
+                <p class="mt-2 text-gray-600">
+                    Upload your MRI scan for AI-powered interpretation
+                </p>
+            </div>
+
+            <div class="max-w-3xl mx-auto">
+                <div id="upload-container" class="relative border-2 border-dashed rounded-lg p-8 text-center">
+                    <div class="upload-area">
+                        <i data-lucide="upload" class="mx-auto h-12 w-12 text-gray-400"></i>
+                        <div class="mt-4">
+                            <label for="file-upload" class="cursor-pointer">
+                                <span class="mt-2 block text-sm font-medium text-gray-900">
+                                    Drag and drop an MRI scan, or click to upload
+                                </span>
+                                <input
+                                    id="file-upload"
+                                    name="file-upload"
+                                    type="file"
+                                    class="hidden"
+                                    accept="image/*"
+                                >
+                            </label>
+                            <p class="mt-1 text-xs text-gray-500">
+                                DICOM, PNG, JPG formats supported
+                            </p>
+                        </div>
+                    </div>
+                    <div id="preview-container" class="hidden">
+                        <img id="preview-image" class="max-h-96 mx-auto rounded-lg" alt="Preview">
+                        <div id="analyzing-overlay" class="hidden absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center">
+                            <div class="text-center">
+                                <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                                <p class="mt-2 text-blue-600 font-medium">Analyzing scan...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white w-full py-6">
+    <div class="px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap justify-between text-left">   
+            <!-- Acknowledgments -->
+            <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                <h3 class="text-lg font-semibold mb-3">Acknowledgments</h3>
+                <p class="text-gray-400">Supported by: [Hackathon Name]</p>
+                <p class="text-gray-400">Special Thanks to: [Mentors/Organizations]</p>
+            </div>
+             <!-- Quick Links -->
+            <div class="w-full md:w-1/4 mb-4 md:mb-0">
+                <h3 class="text-lg font-semibold mb-3">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="/" class="text-gray-400 hover:text-white underline">Home</a></li>
+                    <li><a href="/skin.html" class="text-gray-400 hover:text-white underline">Skin Analysis</a></li>
+                    <li><a href="/mri.html" class="text-gray-400 hover:text-white underline">MRI Analysis</a></li>
+                    <li><a href="/privacy.html" class="text-gray-400 hover:text-white underline">Privacy Policy</a></li>
+                    <li><a href="/terms.html" class="text-gray-400 hover:text-white underline">Terms & Conditions</a></li>
+                </ul>
+            </div>
+            <!-- Contact -->
+            <div class="w-full md:w-1/4">
+                <h3 class="text-lg font-semibold mb-3">Contact</h3>
+                <p class="flex items-center text-gray-400">
+                    <i data-lucide="mail" class="h-5 w-5 mr-2"></i>
+                    <a href="mailto:support@medai.com" class="hover:text-white">support@medai.com</a>
+                </p>
+                <p class="flex items-center text-gray-400">
+                    <i data-lucide="phone" class="h-5 w-5 mr-2"></i>
+                    +91 9427514601
+                </p>
+                <p class="flex items-center text-gray-400">
+                    <i data-lucide="map-pin" class="h-5 w-5 mr-2"></i>
+                    Samta, Vadodara, Gujarat-390023
+                </p>
+            </div>
+        </div>
+        <div class="mt-6 pt-4 border-t border-gray-800 text-center text-gray-400">
+            <p class="text-sm">AI-generated insights do not replace professional medical advice. Always consult a doctor.</p>
+            <p>© 2025 MedAI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // File upload handling
+        const fileUpload = document.getElementById('file-upload');
+        const uploadContainer = document.getElementById('upload-container');
+        const previewContainer = document.getElementById('preview-container');
+        const previewImage = document.getElementById('preview-image');
+        const analyzingOverlay = document.getElementById('analyzing-overlay');
+        const uploadArea = document.querySelector('.upload-area');
+
+        // Drag and drop functionality
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            uploadContainer.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            uploadContainer.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            uploadContainer.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            uploadContainer.classList.add('border-blue-500', 'bg-blue-50');
+        }
+
+        function unhighlight() {
+            uploadContainer.classList.remove('border-blue-500', 'bg-blue-50');
+        }
+
+        uploadContainer.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const file = dt.files[0 ]; // Continue the mri.html file content
+            handleFile(file);
+        }
+
+        fileUpload.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            handleFile(file);
+        });
+
+        function handleFile(file) {
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    uploadArea.classList.add('hidden');
+                    previewContainer.classList.remove('hidden');
+                    previewImage.src = reader.result;
+                    simulateAnalysis();
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function simulateAnalysis() {
+            analyzingOverlay.classList.remove('hidden');
+            setTimeout(() => {
+                analyzingOverlay.classList.add('hidden');
+                // Here you would typically handle the analysis results
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
